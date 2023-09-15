@@ -1,4 +1,7 @@
+using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Persistence;
+
 
 namespace API.Controllers;
 
@@ -13,9 +16,12 @@ public class WeatherForecastController : ControllerBase
 
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    private readonly DataContext _context;
+
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, DataContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
