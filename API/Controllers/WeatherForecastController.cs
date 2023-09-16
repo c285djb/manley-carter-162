@@ -42,7 +42,7 @@ public class WeatherForecastController : ControllerBase
         Console.WriteLine($"Database path: {_context.DbPath}");
         Console.WriteLine("Insert a new WeatherForecast");
 
-        var forecast = new WeatherForecastController()
+        var forecast = new WeatherForecast()
         {
             Date =  new DateOnly(),
             TemperatureC = 75,
@@ -57,6 +57,6 @@ public class WeatherForecastController : ControllerBase
             return forecast;
         }
 
-        throw new Exception("Error creating WeatherForecast")
+        throw new Exception("Error creating WeatherForecast");
     }
 }
