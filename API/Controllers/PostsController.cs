@@ -23,10 +23,10 @@ namespace API.Controllers
             this.context = context;
         }
 
-/// <summary>
-/// my GET api
-/// </summary>
-/// <returns>Get all posts</returns>
+        /// <summary>
+        /// GET api/posts
+        /// </summary>
+        /// <returns>Get all posts</returns>
         [HttpGet(Name = "GetPosts")]
 
         public ActionResult<List<Post>> Get()
@@ -34,11 +34,11 @@ namespace API.Controllers
             return this.context.Posts.ToList();
         }
 
-/// <summary>
-/// My GET BY ID api
-/// </summary>
-/// <param name="id"></param>
-/// <returns>get a single post by ID</returns>
+        /// <summary>
+        /// My GET api/post/[id]
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <returns>a single post by ID</returns>
 
         [HttpGet("{id}", Name = "GetById")]
 
@@ -52,6 +52,36 @@ namespace API.Controllers
 
             return Ok(post);
         }
+
+        /// <summary>
+        /// My POST api/post
+        /// </summary>
+        /// <param name="request">JSON request for posts</param>
+        /// <returns>a new post</returns>
+
+        [HttpPost(Name = "Create")]
+
+        public ActionResult<Post> Create([FromBody]Post request)
+        {
+            var post = new Post
+            {
+                Id = request.Id,
+                Title = request.Title,
+                Body = request.Body,
+                Date = request.Date
+            };
+
+            context.Posts.Add(post);
+            var success = context.SaveChanges() > 0;
+
+            if(success)
+            {
+                return Ok(post);
+            }
+
+            throw new Exception("Error creating post");
+        }
+        
         
     }
 }
