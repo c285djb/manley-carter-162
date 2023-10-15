@@ -81,7 +81,7 @@ namespace API.Controllers
 
             throw new Exception("Error creating post");
         }
-        
+
         /// <summary>
         /// My PUT api/post
         /// </summary>
