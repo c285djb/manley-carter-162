@@ -23,11 +23,34 @@ namespace API.Controllers
             this.context = context;
         }
 
+/// <summary>
+/// my GET api
+/// </summary>
+/// <returns>Get all posts</returns>
         [HttpGet(Name = "GetPosts")]
 
         public ActionResult<List<Post>> Get()
         {
             return this.context.Posts.ToList();
+        }
+
+/// <summary>
+/// My GET BY ID api
+/// </summary>
+/// <param name="id"></param>
+/// <returns>get a single post by ID</returns>
+
+        [HttpGet("{id}", Name = "GetById")]
+
+        public ActionResult<Post> GetById(Guid id)
+        {
+            var post = this.context.Posts.Find(id);
+            if(post is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(post);
         }
         
     }
