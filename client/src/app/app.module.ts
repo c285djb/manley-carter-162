@@ -10,10 +10,14 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewPostComponent } from './view-post/view-post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewPostComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
