@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewPostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
